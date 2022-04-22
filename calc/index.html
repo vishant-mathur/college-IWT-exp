@@ -3,8 +3,7 @@
     <script>  
     const operator = prompt('Enter operator to perform the calculation ( either +, -, * or / ): ');  
     const number1 = parseFloat(prompt ('Enter the first number: '));  
-    const number2 = parseFloat(prompt ('Enter the second number: '));   
-    string str;
+    const number2 = parseFloat(prompt ('Enter the second number: ')); 
     let result;
     switch(operator){
       case "+":
@@ -19,10 +18,8 @@
        case "/":
         result = number1 / number2;
         break;
-       default:
-        str = "invalid input";
     }  
-    window.alert(" Result is " + result+ str);  
+    window.alert(" Result is " + result);  
     </script>  
     <body>  
     </html>  
