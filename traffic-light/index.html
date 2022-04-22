@@ -42,8 +42,7 @@
     </style>
 </head>
 <body>
-    <div id="some_div">
-    </div>
+    <div> Traffic Light <br> <span id="time">10</span>seconds</div>
     <div class="main">
         <div class="red" id="red">
         </div>
@@ -51,8 +50,9 @@
         </div>
         <div class="green" id="green">
         </div>
+        <button type="button" onclick="Color1(); startTimer();">Set background color</button>
     </div>
-    <center><button type="button" onclick="Color1(); Timer();">Set background color</button></center>
+    
 </body>
 <script>
     function Timer(){
@@ -99,19 +99,20 @@ function pad(val) {
         document.getElementById("green").style.backgroundColor = "lightgreen";
         setTimeout("Color1()",0);
     }
-    var timeLeft = 30;
-    var elem = document.getElementById('some_div');
-    
-    var timerId = setInterval(countdown,1000);
-    
-    function countdown() {
-      if (timeLeft == -1) {
-        clearTimeout(timerId);
-        doSomething();
-      } else {
-        elem.innerHTML = timeLeft + ' seconds remaining';
-        timeLeft--; 
-      }
-    }
+   function startTimer(duration,display){
+       var timer= duration,seconds;
+       setInterval(function(){
+           seconds = pasreInt(timer%10,10);
+           seconds = seconds<10?"0"+seconds:seconds>;
+           display.textContent = seconds;
+           if(--timer = duration){
+           timer = duration;
+           },1000);
+   }
+   windows.onload = function(){
+           var tim = 10;
+           display = document.querySelector('#time');
+           startTimer(tim,display);
+       }
 </script>
 </html>
