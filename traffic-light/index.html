@@ -1,118 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        .main{
-            border: 2px solid black;
-            height: 600px;
-            width:200px;
-            margin-top: 100px;
-            margin-left: 600px;
-            display: flex;
-            justify-content: space-around;
-            flex-direction: column;
-            padding-left: 60px;
-            background-color: grey;
-        }
-        .red{
-            border: 2px solid black;
-            border-radius: 75px;
-            height:150px;
-            width:150px;
-            background-color: lightcoral;
-        }
-        .yellow{
-            border: 2px solid black;
-            border-radius: 75px;
-            height:150px;
-            width:150px;
-            background-color: lightgoldenrodyellow;
-        }
-        .green{
-            border: 2px solid black;
-            border-radius: 75px;
-            height:150px;
-            width:150px;
-            background-color: lightgreen;
-        }
-    </style>
-</head>
+    <title>Traffic light</title>
+    <link rel="stylesheet" href="style.css">
+
 <body>
-    <div><span id="time">10</span>seconds</div>
-    <div class="main">
-        <div class="red" id="red">
-        </div>
-        <div class="yellow" id="yellow">            
-        </div>
-        <div class="green" id="green">
-        </div>
-        <button type="button" onclick="Color1(); startTimer()">Set background color</button>
+    <header>
+        <h1>Traffic light</h1>
+    </header>
+    <div id="some_div">
     </div>
-    
-</body>
-<script>
-    function Timer(){
-        var secondsLabel = document.getElementById("seconds");
-        var totalSeconds = 00;
-        setInterval(setTime, 1000);
+    <div class="block">
+        <div id="redcircle" class="bl">
 
-        function setTime() {
-        ++totalSeconds;
-        secondsLabel.innerHTML = pad(totalSeconds % 60);
+
+        </div>
+        <div id="yellowcircle" class="bl">
+
+        </div>
+        <div id="greencircle" class="bl">
+
+        </div>
+        <button onclick="colour1(); starttime()">Start</button>
+    </div>
+
+    <script>
+        var red = document.getElementById("redcircle");
+        var yellow = document.getElementById("yellowcircle");
+        var green = document.getElementById("greencircle");
+
+        function colour1(){
+            red.style.backgroundColor="red";
+            setTimeout("white1()",15000);
+            
         }
+        function white1(){
+            red.style.backgroundColor="lightcoral";
+            setTimeout("colour2()",500);
+        }
+        function colour2(){
+            yellow.style.backgroundColor="yellow";
+            setTimeout("white2()",15000);
+            
+        }
+        function white2(){
+            yellow.style.backgroundColor="wheat";
+            setTimeout("colour3()",500);
+        }
+        function colour3(){
+            green.style.backgroundColor="green";
+            setTimeout("white3()",15000);
+            
+        }
+        function white3(){
+            green.style.backgroundColor="lightgreen";
+            setTimeout("colour1()",500);
+        }
+function starttime(){
 
-function pad(val) {
-  var valString = val + "";
-  if (valString.length < 2) {
-    return "0" + valString;
-  } else {
-    return valString;
-  }
-}}
-
-
-    function Color1() {
-        document.getElementById("red").style.backgroundColor = "red";
-        setTimeout("white1()",10000);
+    var timeLeft = 45;
+    var elem = document.getElementById('some_div');
+    
+    var timerId = setInterval(countdown,1000);
+    
+    function countdown() {
+        if (timeLeft == -1) {
+            timeLeft=45;
+            countdown();
+        } else {
+            elem.innerHTML = timeLeft + ' seconds remaining';
+            timeLeft--; 
+        }
+        
+    }
 }
-    function white1(){
-        document.getElementById("red").style.backgroundColor = "lightcoral";
-        setTimeout("Color2()",0);
-    }
-    function Color2(){
-        document.getElementById("yellow").style.backgroundColor = "yellow";
-        setTimeout("white2()",10000);
-    }
-    function white2(){
-        document.getElementById("yellow").style.backgroundColor = "lightgoldenrodyellow";
-        setTimeout("Color3()",0);
-    }
-    function Color3(){
-        document.getElementById("green").style.backgroundColor = "green";
-        setTimeout("white3()",10000);
-    }
-    function white3(){
-        document.getElementById("green").style.backgroundColor = "lightgreen";
-        setTimeout("Color1()",0);
-    }
-   function startTimer(duration,display){
-       var timer= duration,seconds;
-       setInterval(function(){
-           seconds = pasreInt(timer%10,10);
-           seconds = seconds<10?"0"+seconds:seconds>;
-           display.textContent = seconds;
-           if(--timer = duration){
-           timer = duration;
-           },1000);
-   }
-   windows.onload = function(){
-           var tim = 10;
-           display = document.querySelector('#time');
-           startTimer(tim,display);
-       }
-</script>
+    
+
+    </script>
+</body>
+
 </html>
