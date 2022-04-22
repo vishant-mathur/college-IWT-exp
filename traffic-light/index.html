@@ -42,7 +42,8 @@
     </style>
 </head>
 <body>
-    <label id="seconds">00</label>
+    <div id="some_div">
+    </div>
     <div class="main">
         <div class="red" id="red">
         </div>
@@ -76,27 +77,41 @@ function pad(val) {
 
     function Color1() {
         document.getElementById("red").style.backgroundColor = "red";
-        setTimeout("white1()",2000);
+        setTimeout("white1()",10000);
 }
     function white1(){
         document.getElementById("red").style.backgroundColor = "lightcoral";
-        setTimeout("Color2()",0);
+        setTimeout("Color2()",500);
     }
     function Color2(){
         document.getElementById("yellow").style.backgroundColor = "yellow";
-        setTimeout("white2()",2000);
+        setTimeout("white2()",10000);
     }
     function white2(){
         document.getElementById("yellow").style.backgroundColor = "lightgoldenrodyellow";
-        setTimeout("Color3()",0);
+        setTimeout("Color3()",500);
     }
     function Color3(){
         document.getElementById("green").style.backgroundColor = "green";
-        setTimeout("white3()",2000);
+        setTimeout("white3()",10000);
     }
     function white3(){
         document.getElementById("green").style.backgroundColor = "lightgreen";
         setTimeout("Color1()",0);
+    }
+    var timeLeft = 30;
+    var elem = document.getElementById('some_div');
+    
+    var timerId = setInterval(countdown,1000);
+    
+    function countdown() {
+      if (timeLeft == -1) {
+        clearTimeout(timerId);
+        doSomething();
+      } else {
+        elem.innerHTML = timeLeft + ' seconds remaining';
+        timeLeft--; 
+      }
     }
 </script>
 </html>
