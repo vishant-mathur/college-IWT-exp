@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traffic light</title>
+    <link rel="stylesheet" href="style.css">
+
+<body>
+    <header>
+        <h1>Traffic light</h1>
+    </header>
+    <div id="some_div">
+    </div>
+    <div class="block">
+        <div id="redcircle" class="bl">
+
+
+        </div>
+        <div id="yellowcircle" class="bl">
+
+        </div>
+        <div id="greencircle" class="bl">
+
+        </div>
+        <button onclick="colour1(); starttime()">Start</button>
+    </div>
+
+    <script>
+        var red = document.getElementById("redcircle");
+        var yellow = document.getElementById("yellowcircle");
+        var green = document.getElementById("greencircle");
+
+        function colour1(){
+            red.style.backgroundColor="red";
+            setTimeout("white1()",15000);
+            
+        }
+        function white1(){
+            red.style.backgroundColor="lightcoral";
+            setTimeout("colour2()",500);
+        }
+        function colour2(){
+            yellow.style.backgroundColor="yellow";
+            setTimeout("white2()",15000);
+            
+        }
+        function white2(){
+            yellow.style.backgroundColor="wheat";
+            setTimeout("colour3()",500);
+        }
+        function colour3(){
+            green.style.backgroundColor="green";
+            setTimeout("white3()",15000);
+            
+        }
+        function white3(){
+            green.style.backgroundColor="lightgreen";
+            setTimeout("colour1()",500);
+        }
+function starttime(){
+
+    var timeLeft = 45;
+    var elem = document.getElementById('some_div');
+    
+    var timerId = setInterval(countdown,1000);
+    
+    function countdown() {
+        if (timeLeft == -1) {
+            timeLeft=45;
+            countdown();
+        } else {
+            elem.innerHTML = timeLeft + ' seconds remaining';
+            timeLeft--; 
+        }
+        
+    }
+}
+    
+
+    </script>
+</body>
+
+</html>

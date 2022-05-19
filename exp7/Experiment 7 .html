@@ -1,0 +1,31 @@
+<html>
+
+  <style>
+  
+  
+  #background{
+  height:100%;
+  width:100%;
+  
+  }
+  
+  </style>
+  
+  <body>
+  
+  <div id="background"></div>
+  
+  </body>
+  <script type ="text/javascript">
+  var i = 0;
+  function change() {
+    var doc = document.getElementById("background");
+    var color = ["black", "blue", "brown", "green"];
+    doc.style.backgroundColor = color[i];
+    i = (i + 1) % color.length;
+  }
+  setInterval(change, 5000);
+  </script>
+    
+  </html>
+  

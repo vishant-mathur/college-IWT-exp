@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiment 6</title>
+   <script type="text/javascript" >
+       function validate(){
+           var username = document.myform.name.value;
+           var password = document.myform.password.value;
+           var age = document.myform.age.value;
+           if (username = "" || password == ""){
+               alert("No blank values allowed");
+               return false;
+           }
+           else if (password.length<6){
+               alert("Password must be of atleast 6 characters");
+               return false;
+           }
+           else if (age<13||age>80){
+               alert("Age must be between 13 to 80");
+               return false;
+           }
+           else{
+               return true;
+           }
+       }
+       </script>
+</head>
+<body>
+    <form name="myform" method = "post" action = "HP.html" onsubmit = "return validate()">
+        <fieldset><legend>Registration form</legend>
+        Name:
+        <input type="text" name="name" placeholder = "Enter your name"><br><br>
+        Email:
+        <input type="email" name="em"><br><br>
+        Password:
+        <input type="password" name = "password"><br><br>
+        Gender:
+        <input type = "radio" name = "gender" value = "m"/>Male
+        <input type = "radio" name = "gender" value = "f"/>Female
+        <input type = "radio" name = "gender" value = "o"/>Other
+        <br/><br/>
+        Age:
+        <input type ="number" name="age"><br><br>
+
+        <button type = "submit" onclick= "return validate()" name = "Submit"> Submit </button></fieldset></form>
+
+</body>
+</html>
